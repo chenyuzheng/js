@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+			
+		//函数
+//		function Replace(str,str1){
+//			let star='*'.repeat(str1.length);
+//			return str.replace(str1,star);
+//		}
+//		function ReplaceStar(str,str1){
+//			let star='';
+//			for(let i=0;i<str1.length;i++){
+//				star+='*';
+//			}
+//			
+//			while(str.includes(str1)){
+//				str=str.replace(str1,star);
+//			}
+//			return str;
+//		}
+		let str1='abcdabc';
+//		console.log(Replace(str1,'ab'));
+//		console.log(ReplaceStar(str1,'ab'));
+		
+		//添加到string
+		String.prototype.ReplaceStar=function(str1){
+			let star='*'.repeat(str1.length);
+			let that=this;
+			while(that.includes(str1)){
+				that=that.replace(str1,star);
+			}
+			return that;
+		}
+		console.log(str1.ReplaceStar('ab'));
+		
+		
+		
+		let str11='www.baidu.comwww.baidu.comwww.baidu.comwww.baidu.com';
+		
+		
+		
+//		function Search(str,str1){
+//			let star='*'.repeat(str1.length);
+//			let str12=[];
+//			while(str.includes(str1)){
+//				str12[str12.length]=str.indexOf(str1);
+//				str=str.replace(str1,star);
+//			}
+//			return str12;
+//		}
+//		console.log(Search(str11,'baidu'));
+		
+		
+		//push函数
+//		function Search(str,str1){
+//			let star='*'.repeat(str1.length);
+//			let str12=[];
+//			while(str.includes(str1)){
+//				str12.push(str.indexOf(str1));
+//				str=str.replace(str1,star);
+//			}
+//			return str12;
+//		}
+//		console.log(Search(str11,'baidu'));
+		
+		
+		//将字符串str1删去
+//		function Search(str,str1){
+//			let star='*'.repeat(str1.length);
+//			let str12=[];
+//			let i=0;
+//			while(str.includes(str1)){
+//				let pos=str.indexOf(str1);
+//				str12.push(str.indexOf(str1)+(i++)*str1.length);
+//				str=str.slice(0,pos)+str.slice(pos+str1.length);
+//			}
+//			return str12;
+//		}
+//		console.log(Search(str11,'baidu'));
+		
+		
+		
+//		if判断
+		function Search(str,str1){
+			let newarr=[];
+			for(let i=0;i<str.length;i++){
+				/* str.slice(i,i+str1.length);
+				 * str.substring(i,i+str1.length);
+				 */
+//				if(str.substr(i,str1.length)==str1){
+//					newarr.push(i);
+//				}
+//				if(str.slice(i,i+str1.length)==str1){
+//					newarr.push(i);
+//				}
+				if(str.substring(i,i+str1.length)==str1){
+					newarr.push(i);
+				}
+			}
+			return newarr;
+		}
+		console.log(Search(str11,'baidu'));
+		
+		
+//		String.prototype.Search=function(str1){
+//			let star='*'.repeat(str1.length);
+//			let str12=[];
+//			let that=this;
+//			while(that.includes(str1)){
+//				str12[str12.length]=that.indexOf(str1);
+//				that=that.replace(str1,star);
+//			}
+//			return str12;
+//		}
+//		console.log(str11.Search('baidu'));
+		
+		
+	</script>
+	<body>
+	</body>
+</html>

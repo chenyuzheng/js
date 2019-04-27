@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script>
+		//数组中的最大值
+		var arr=[10,20,30,40,5];
+		var max=arr[0];
+		for(var i=1;i<arr.length;i++){
+			if(arr[i]>max){
+				max=arr[i];
+			}
+		}
+		alert(max);
+		console.log(arr);
+		//数组的去空:将数组中非空的元素放到另一个数组中
+		var arr1=[1,2,3,,,8,9,,];
+		var arr11=[];
+		for(var i=0;i<arr1.length;i++){
+			if(arr1[i]!=undefined){
+				arr11[arr11.length]=arr1[i];
+			}
+		}
+		console.log(arr11);
+		//二维数组:数组的元素还是数组    最大值
+		var arr12=[10,50,80];
+		var score=[arr,arr11,arr12];
+		var score=[
+					[10,20,30,40,5],
+					[1,2,3,8,9],
+					[10,50,80]
+					];
+		var max=score[0][0];
+		for(var i=0;i<score.length;i++){
+			for(var j=0;j<score[i].length;j++){
+				if(score[i][j]>max){
+					max=score[i][j];
+				}
+			}
+		}
+		alert(max);
+		
+		//基本语法函数
+		table(3,4);
+		function table(row,col){
+			var str='<table>';
+			for(var i=1;i<=row;i++){
+				str+='<tr>';
+				for(var j=1;j<=col;j++){
+					str+='<td>'+i+'-'+j+'</td>';
+				}
+				str+='</tr>';
+			}
+			str+='</table>';
+			document.write(str);
+		}
+		
+		//自变量函数
+		var table=function(row,col){
+			var str='<table>';
+			for(var i=1;i<=row;i++){
+				str+='<tr>';
+				for(var j=1;j<=col;j++){
+					str+='<td>'+i+'-'+j+'</td>';
+				}
+				str+='</tr>';
+			}
+			str+='</table>';
+			document.write(str);
+		}
+		table(5,4);
+		
+		//自变量函数与基本语法函数同时出现
+		table1();
+		function table1(){
+			var str='<table>';
+			for(var i=1;i<=10;i++){
+				str+='<tr>';
+				for(var j=1;j<=10;j++){
+					str+='<td>'+i+'-'+j+'</td>';
+				}
+				str+='</tr>';
+			}
+			str+='</table>';
+			document.write(str);
+		}
+		var table1=function(){
+			var str='<table>';
+			for(var i=1;i<=5;i++){
+				str+='<tr>';
+				for(var j=1;j<=5;j++){
+					str+='<td>'+i+'-'+j+'</td>';
+				}
+				str+='</tr>';
+			}
+			str+='</table>';
+			document.write(str);
+		}
+		table1();
+		
+		//最大值
+		var arr1=[10,20,30,40,5];
+		maxarray(arr1);
+		function maxarray(arr){
+			var max=arr[0];
+			for(var i=1;i<arr.length;i++){
+				if(arr[i]>max){
+					max=arr[i];
+				}
+			}
+			return max;
+		}
+		alert(maxarray(arr1));
+		//最小值
+		var arr1=[10,20,30,40,5];
+		minarray(arr1);
+		function minarray(arr){
+			var min=arr[0];
+			for(var i=1;i<arr.length;i++){
+				if(arr[i]<min){
+					min=arr[i];
+				}
+			}
+			alert(min);
+		}
+		
+		//排序(升序)
+		document.write('<h1>排序(升序)</h1>');
+		var arr1=[10,20,30,40,5];
+		sortup(arr1);
+		function sortup(arr){
+			for(var i=0;i<arr.length;i++){
+				for(var j=i+1;j<arr.length;j++){
+					if(arr[i]>arr[j]){
+						var temp=arr[j];
+						arr[j]=arr[i];
+						arr[i]=temp;
+					}
+				}
+			}
+			document.write(arr+'<br>');
+		}
+		//排序(降序)
+		document.write('<h1>排序(降序)</h1>');
+		var arr1=[10,20,30,40,5];
+		sortdown(arr1);
+		function sortdown(arr){
+			for(var i=0;i<arr.length;i++){
+				for(var j=i+1;j<arr.length;j++){
+					if(arr[i]<arr[j]){
+						var temp=arr[j];
+						arr[j]=arr[i];
+						arr[i]=temp;
+					}
+				}
+			}
+			document.write(arr+'<br>');
+		}
+		//一个函数实现升序和降序，默认升序
+		sort(arr1,'升序');
+		sort(arr1,'降序');
+		sort(arr1);
+		function sort(arr,flag){
+			//默认排序    flag='升序'
+			//if else
+			if(flag==undefined){
+				flag='升序';
+			}else{
+				flag=flag;
+			}
+			//三元运算符
+			flag= flag==undefined?'升序':flag;
+			//逻辑运算符
+			flag=flag||"升序";
+					
+			
+			if(flag==='升序'){
+				sortup(arr);
+			}else if(flag==='降序'){
+				sortdown(arr);
+			}
+		}
+		//一个函数同时实现求最大值最小值
+		function zuizhi(arr,flag){
+			if(flag=='最大值'){
+				maxarray(arr);
+			}else if(flag=='最小值'){
+				minarray(arr);
+			}
+		}
+		zuizhi(arr1,'最大值');
+		zuizhi(arr1,'最小值');
+		//等腰函数
+		dengyao();		
+		function dengyao(){
+			var num=prompt('请输入行数',5);
+        	for(var i=1;i<=num;i++){
+        		for(var j=1;j<=num-i;j++){
+        			document.write('-');
+        		}
+        		for(var k=1;k<=2*i-1;k++){
+        			document.write('*');
+        		}
+        		document.write('<br>');
+        	}
+       }
+		//在数组的末尾添加一个或多个元素
+		function push(arr){
+			for(var i=1;i<arguments.length;i++){
+				arr[arr.length]=arguments[i];
+			}
+			console.log(arr);
+		}
+		push(arr1,'a','b','c');
+		
+		function push1(arr,...rest){
+			if(!(typeof(arr)==='object' && arguments.length>1)){
+				return false;
+			}
+			for(var i=0;i<rest.length;i++){
+				arr[arr.length]=rest[i];
+			}
+			return arr;
+		}
+//		push1(arr12,'a','b','c');
+		console.log(push1(arr12,'a','b','c'));
+		
+		//判断数组是否存在小于0得数，true,false
+		function xiaoyu(arr){
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]<0){
+					return true;
+				}
+			}
+			return false;
+		}
+		var num=[0,-1,-2];
+		alert(xiaoyu(num));
+		
+		
+		
+		function push2(arr,...rest){
+			for(var i=0;i<rest.length;i++){
+				arr[arr.length]=rest[i];
+			}
+			console.log(rest);
+		}
+		push(arr12,'a');
+		
+	</script>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+	
+		//判断数组是否存在大于0得数，true,false
+		function bigger(arr){
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]>0){
+					return true;
+				}
+			}
+			return false;
+		}
+		var num=[0,1,-2];
+		alert(bigger(num));
+		
+		//判断是否全部大于0，true，false
+		function all(arr){
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]<=0){
+					return false;
+				}
+			}
+			return true;
+		}
+		var num=[0,1,2];
+		alert(all(num));
+		
+		//数组开头插入元素
+		function insert(arr,...rest){
+			var arr12=[];
+			for(var i=0;i<arr.length;i++){
+				if(i==0){
+					arr12[0]=rest;
+				}
+				arr12[arr12.length]=arr[i];
+			}
+			return arr12;
+		}
+		var arr11=['a','b','c'];
+		alert(insert(arr11,10,20,30));
+		
+		
+//		function insert(arr,...rest){
+//			var arr12=[];
+//			for(var i=0;i<arr.length;i++){
+//				arr12[i]=arr[i];
+//			}
+//			arr.length=0;
+//			for(var j=0;j<rest.length;j++){}
+//			for(var j=0;j<arr12;j++){}
+//			return arr;
+//		}
+
+		//筛选 数组》0
+		function choice(arr){
+			var arr13=[];
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]>0){
+					arr13[arr13.length]=arr[i];
+				}
+			}
+			return arr13;
+		}
+		var num=[1,2,0,-1,-2];
+		alert(choice(num));
+		
+		//数组元素扩大两倍
+		function exchange(arr){
+			for(var i=0;i<arr.length;i++){
+				arr[i]*=2;
+			}
+			return arr;
+		}
+		alert(exchange(num));
+		
+		//数组合并
+		function add(arr,arr1){
+			if(arguments.length<=1){
+				return false;
+			}
+			var arr13=[];
+			for(var i=0;i<arr.length;i++){
+				arr13[arr13.length]=arr[i];
+			}
+			for(var i=0;i<arr1.length;i++){
+				arr13[arr13.length]=arr1[i];
+			}
+			return arr13;
+		}
+		var arr=['a','b','c','d'];
+		var arr1=[1,2,3,4];
+		alert(add(arr,arr1));
+		
+		//数组排序
+			//排序(升序)
+		document.write('<h1>排序(升序)</h1>');
+		var arr1=[10,20,30,40,5];
+		document.write(sortup(arr1));
+		function sortup(arr){
+			for(var i=0;i<arr.length;i++){
+				for(var j=i+1;j<arr.length;j++){
+					if(arr[i]>arr[j]){
+						var temp=arr[j];
+						arr[j]=arr[i];
+						arr[i]=temp;
+					}
+				}
+			}
+			document.write('<br>');
+			return arr;
+		}
+			//排序(降序)
+		document.write('<h1>排序(降序)</h1>');
+		var arr1=[10,20,30,40,5];
+		document.write(sortdown(arr1));
+		function sortdown(arr){
+			for(var i=0;i<arr.length;i++){
+				for(var j=i+1;j<arr.length;j++){
+					if(arr[i]<arr[j]){
+						var temp=arr[j];
+						arr[j]=arr[i];
+						arr[i]=temp;
+					}
+				}
+			}
+			document.write('<br>');
+			return arr;
+		}
+			//一个函数实现升序和降序，默认升序
+		document.write(sort(arr1,'升序'));
+		document.write(sort(arr1,'降序'));
+		document.write(sort(arr1));
+		function sort(arr,flag){
+			//默认排序    flag='升序'
+			//三元运算符
+			flag= flag==undefined?'升序':flag;				
+			if(flag==='升序'){
+				sortup(arr);
+			}else if(flag==='降序'){
+				sortdown(arr);
+			}
+			return arr;
+		}
+		
+		//数组反转
+		function fanzhuan(arr){
+			var arr13=[];
+			for(var i=arr.length-1;i>=0;i--){
+				arr13[arr13.length]=arr[i];
+			}
+			return arr13;
+		}
+		alert(fanzhuan(arr));
+		
+		//包含
+		function include(arr,arr1){
+			if(typeof(arr)!='object' || arguments.length<=1){
+				return false;
+			}
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]==arr1){
+					return true;
+				}
+			}
+			return false;
+		}
+		alert(include(arr,'b'));
+		
+		//查找
+		function find(arr,arr1){
+			if(typeof(arr)!='object' || arguments.length<=1){
+				return false;
+			}
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]==arr1){
+					return i+1;
+				}
+			}
+			return -1;
+		}
+		alert(find(arr,'b'));
+		
+		//转换
+		function translate(arr,flag){
+			flag=flag==undefined?',':flag;
+			if(typeof(arr)!='object' || arguments.length<1){
+				return false;
+			}
+			var num=arr[0];
+			for(var i=1;i<arr.length;i++){
+				num+=flag+arr[i];
+			}
+			return num;
+		}
+		alert(translate(arr,'-'));
+	</script>
+	<body>
+	</body>
+</html>

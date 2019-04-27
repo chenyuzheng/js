@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		
+		//回调
+		alert(caculate(3,small));
+		function caculate(arr,name){
+			return name(arr);
+		}
+		function double(arr){
+			arr*=2;
+			return arr;
+		}
+		function small(arr){
+			arr/=2;
+			return arr;
+		}
+		function yunsuan(arr,arr1,ysf){
+			var num;
+			switch(ysf){
+				case '+':
+				num=arr+arr1;
+				break;
+				case '-':
+				num=arr-arr1;
+				break;
+				case '*':
+				num=arr*arr1;
+				break;
+				case '/':
+				num=arr/arr1;
+				break;
+			}
+			return num;
+		}
+		//递归
+		function digui(num){
+			if(num<6){
+				digui(++num);				
+			}
+			console.log(num);
+		}
+		digui(0);
+		
+		//深拷贝
+		function deepCopy(arr){
+			var newarr=[];
+			for(var i=0;i<arr.length;i++){
+				if(typeof arr[i]=='object'){
+					newarr[i]=deepCopy(arr[i]);
+				}else{
+					newarr[i]=arr[i];
+				}
+			}
+			return newarr;
+		}
+		
+		
+		var arr=[1,2,3,[4,5,6,[7,8,9]]];
+		console.log(deepCopy(arr));
+		
+		
+		//闭包
+		function a(){
+			var num=10;
+			function b(){
+				return num;
+			}
+			return b;
+		}
+		var result=a();
+		alert(result());
+		
+		//箭头函数
+		var b=num=>num;
+		var b=function(num){
+			return num;
+		}
+		alert(b(1));
+		
+		
+		//内置顶层函数
+//		let str=escape('abcd');    对数字字符串进行编码，转换成计算机认识的语言
+//		console.log(str);
+		console.log(parseInt('-123'));
+		
+		
+		
+		//判断奇偶
+		let num=20;
+		let flag=num%2?false:true;
+		alert(flag);
+		
+		let arr1=[];
+		for(let i=0;i<10;i++){
+			arr1[i]=function(){
+				alert(i);
+			}
+		}
+		arr1[4]();
+		
+		
+		
+		
+		
+	</script>
+	<body>
+	</body>
+</html>

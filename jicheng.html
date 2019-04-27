@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		class Person{
+			constructor(){
+				this.name='zhangsan';
+			}
+		}
+		class Student extends Person{
+			constructor(){
+				super();
+				this.age=18;
+			}
+		}
+		let zhangsan=new Student();
+		alert(zhangsan.name);
+		
+		
+		//Math
+		console.dir(Math);
+		
+		let a=[1,2,3,4];
+		console.log(Math.max(...a));
+		//在数组中随机取出任意个元素
+		
+//		function RandomTake(arr,flag){
+//			if(flag<=arr.length){
+//				for(let i=1;i<=flag;i++){
+//					let num=Math.floor(Math.random()*arr.length);
+//					console.log(arr[num]);
+//				}
+//			}else{
+//				return false;
+//			}
+//		}
+//		let arr=['a','b','c','d','e'];
+//		RandomTake(arr,3);
+		
+		
+//		function RandomTake(arr,flag){
+//			if(!(arr instanceof Array) ){return false;}
+//			flag=flag?flag:3;
+//				let newarr=[];
+//				for(let i=0;i<flag;i++){
+//					let num=Math.floor(Math.random()*arr.length);
+//					newarr[newarr.length]=arr[num];	
+//				}
+//				return newarr;
+//		}
+//		let arr=['a','b','c','d','e'];
+//		console.log(RandomTake(arr,3));
+		
+//		function RandomTake(arr,flag){
+//			if(!(arr instanceof Array) ){return false;}
+//			flag=flag?flag:3;
+//			let newarr=[];
+//			while(newarr.length<flag){
+//				let num=Math.floor(Math.random()*arr.length);
+//				newarr[newarr.length]=arr[num];
+//			}
+//			return newarr;
+//		}
+//		let arr=['a','b','c','d','e'];
+//		console.log(RandomTake(arr,3));
+		
+//		function RandomTake(arr,flag){
+//			if(!(arr instanceof Array) ){return false;}
+//			flag=flag?flag:3;
+//			let newarr=[];
+//			do{
+//				let num=Math.floor(Math.random()*arr.length);
+//				newarr[newarr.length]=arr[num];
+//			}while(newarr.length<flag)
+//			return newarr;
+//		}
+//		let arr=['a','b','c','d','e'];
+//		console.log(RandomTake(arr,10));
+		
+		function RandomTake(arr,flag){
+			if(!(arr instanceof Array) ){return false;}
+			flag=flag?flag:3;
+				let newarr=[];
+				for(let i=0;i<flag;i++){
+					let num=Math.floor(Math.random()*arr.length);
+					while(include(newarr,arr[num])){
+						num=Math.floor(Math.random()*arr.length);
+					}
+					newarr[newarr.length]=arr[num];	
+				}
+				return newarr;
+		}
+		function include(arr,ele){
+			for(let i=0;i<arr.length;i++){
+				if(arr[i]==ele){
+					return true;
+				}
+			}
+			return false;
+		}
+		let arr=['a','b','c','d','e'];
+		console.log(RandomTake(arr,5));
+		
+		let str='abcd';
+		console.log(str.__proto__);
+	</script>
+	<body>
+	</body>
+</html>

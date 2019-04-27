@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		//json格式
+		let zhangsan={
+			'height':180,
+			'sex':'nan',
+			'age':20,
+			'eat':function(){
+				alert('eat');
+			}
+		}
+		
+		//构造函数 声明后添加
+		function phone(){
+			
+		}
+		let apple=new phone();
+		apple.brand='apple';
+		apple.color='red';
+		apple.size=5.5;
+		apple.calls=function(){
+			alert('call');
+		}
+		alert(apple.color);
+		alert(apple['size']);
+		apple.calls();
+		
+		let hw=new phone();
+		hw.brand='huawei';
+		hw.color='red';
+		hw.size=5.6;
+		hw.calls=function(){
+			alert('call huawei');
+		}
+		alert(hw.color);
+		alert(hw['size']);
+		hw.calls();
+		
+		
+		
+		
+		
+//		
+//		let lisi=new Student('lisi');
+//		
+//		alert(lisi.classes);
+//		alert(lisi['names']);
+//		lisi.study();
+//		ww.study();
+//		lisi.say('李四说话');
+//		ww.say('王五说话');
+		
+		
+		
+		
+		//类名
+		class People{
+			constructor(){
+				this.name='lisi';
+				this.age=20;
+			}
+			eat(){
+				alert('eat a food');
+			}
+		}
+		
+		let liwei=new People();
+		let zs=new People();
+		
+//		alert(liwei.name);
+//		liwei.eat();
+		
+		
+		function Student(name){
+			this.classes='wuiw1703';
+			this.names=name;
+			this.skills='html,css,js';
+			this.aa={
+				names:'xiaozhang'
+			}
+			this.study=function(){
+				alert(this.names+this.classes);
+			}
+			this.say=function(str){
+				alert(str);
+			}
+		}
+		Student.prototype=new People();
+		let ww=new Student('ww');
+		ww.eat();
+		for(let i in ww){
+			console.log(i);
+		}
+		alert(ww.prototype==ww.__proto__);
+//		alert(People.prototype.__proto__ == Object.prototype)
+//		console.log(Object.prototype.__proto__)
+		//示例
+		function myArr(){
+			this[0]='a';
+			this.length=10;
+			this['length']=10;
+		}
+		let arr=new myArr();
+		alert(arr[0]);
+		
+		
+		function myArr1(...rest){
+			for(let i=0;i<rest.length;i++){
+				this[i]=rest[i];
+			}
+			this.length=rest.length;
+			this.some=function(num){
+				for(let i=0;i<this.length;i++){
+					if(this[i]<num){
+						return true;
+					}
+				}
+				return false; 
+			}
+			this.push=function(...rest){
+				for(let i=0;i<rest.length;i++){
+					this[this.length]=rest[i];
+					this.length++;
+				}
+				return this;
+			}
+//			this.push=function(...rest){
+//				let newarr=new myArr1();
+//				for(let i=0;i<this.length;i++){
+//					newarr[i]=this[i];
+//					newarr.length++;
+//				}
+//				for(let i=0;i<rest.length;i++){
+//					newarr[newarr.length]=rest[i];
+//					newarr.length++;
+//				}
+//				return newarr;
+//			}
+			this.filter=function(num){
+				let newarr=new myArr1();
+				for(let i=0;i<this.length;i++){
+					if(this[i]>num){
+						newarr.push(this[i]);
+					}
+				}
+				return newarr;
+			}
+			
+			this.map=function(fn){
+				let newarr=new myArr1();
+				for(let i=0;i<this.length;i++){
+					newarr.push(fn(this[i],i));
+				}
+				return newarr;
+			}
+			this.join=function(ysf){
+				let str='';
+				for(let i=0;i<this.length;i++){
+					if(i==this.length-1){
+						str+=this[i];
+					}else{
+						str+=this[i]+ysf;
+					}
+				}
+				return str;
+			}
+			this.reverse=function(){
+				let newarr=new myArr1();
+				for(let i=this.length-1;i>=0;i--){
+					newarr.push(this[i]);
+				}
+				return newarr;
+			}
+		}
+		
+		
+		let arr1=new myArr1(1,2,3,4);
+		alert(arr1.some(2));
+//		console.log(arr1.push('a','b','c'));  
+		console.log(arr1.filter(2));
+		let newarr=arr1.map(function(value,index){
+			return value*2;
+		})
+		console.log(newarr);
+		console.log(arr1.join(','));
+		console.log(arr1.reverse());
+	</script>
+	<body>
+	</body>
+</html>

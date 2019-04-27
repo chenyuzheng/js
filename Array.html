@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+//		let arr=new Array(7);    /*长度为7的数组*/
+//		let arr2=Array.of(7);     /*元素为7的数组*/
+		let arr1=[1,2,3,5,6,8,9,10];
+		arr1.forEach(function(value,index,obj){
+			console.log( value+'-'+index+'-'+obj);
+		})
+		
+		let arr3=[30,1,20,10,2,3];
+		arr3.forEach(function(value,index,obj){
+			console.log(value);
+			console.log(index);
+			console.log(obj);
+		})
+		
+//		function Person(){
+//			this.name='zhangsan';
+//			this.say=function(){
+//				console.log(this);
+//				aa();
+//				function aa(){
+//					console.log(this);
+//				}
+//			}
+//		}
+		
+		function Person(){
+			this.name='zhangsan';
+			this.say=function(){
+				console.log(this);
+				let aa=()=>{console.log(this)};
+				aa();
+			}
+		}
+		let zhangsan=new Person();
+		zhangsan.say();
+
+	</script>
+	<body>
+	</body>
+</html>

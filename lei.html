@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		class myArr1{
+			constructor(...rest){
+				for(let i=0;i<rest.length;i++){
+					this[i]=rest[i];
+				}
+				this.length=rest.length;
+			}
+			push(...rest){
+				for(let i=0;i<rest.length;i++){
+					this[this.length]=rest[i];
+					this.length++;
+				}
+				return this;
+			}
+			some(num){
+				for(let i=0;i<this.length;i++){
+					if(this[i]<num){
+						return true;
+					}
+				}
+				return false; 
+			}
+			filter(num){
+				let newarr=new myArr1();
+				for(let i=0;i<this.length;i++){
+					if(this[i]>num){
+						newarr.push(this[i]);
+					}
+				}
+				return newarr;
+			}
+			map(fn){
+				let newarr=new myArr1();
+				for(let i=0;i<this.length;i++){
+					newarr.push(fn(this[i],i));
+				}
+				return newarr;
+			}
+			join(ysf){
+				let str='';
+				for(let i=0;i<this.length;i++){
+					if(i==this.length-1){
+						str+=this[i];
+					}else{
+						str+=this[i]+ysf;
+					}
+				}
+				return str;
+			}
+			reverse(){
+				let newarr=new myArr1();
+				for(let i=this.length-1;i>=0;i--){
+					newarr.push(this[i]);
+				}
+				return newarr;
+			}
+		}
+		let arr1=new myArr1(1,2,3,4);
+		alert(arr1.some(2));
+//		console.log(arr.push('a'));
+		console.log(arr1.filter(2));
+		let newarr=arr1.map(function(value,index){
+			return value*2;
+		})
+		console.log(newarr);
+		console.log(arr1.join(','));
+		console.log(arr1.reverse());
+		
+		//遍历对象
+		for(let i in arr1){
+			console.log(arr1[i]);
+		}
+		console.dir(arr1);
+		//判断对象是否是从类中实例化出来的
+		alert(arr1 instanceof myArr1);
+		
+		
+		//判断a的类型是否是一个数组
+		let a=[];
+		a.constructor==Array;
+		
+		
+		
+		
+		
+//		class People{
+//			constructor(){
+//				this.name='lisi';
+//				this.age=20;
+//			}
+//			eat(){
+//				alert('eat');
+//			}
+//		}
+//		let liwei=new People();
+		
+//		for(let i in liwei){
+////			i    属性名
+//			console.log(liwei[i]);    
+//		}
+
+
+
+		class People{
+			constructor(){
+				this.name='lisi';
+				this.age=20;
+			}
+			eat(){
+				alert('eat a food');
+			}
+		}
+		function Student(name){
+			this.classes='wuiw1703';
+			this.names=name;
+			this.skills='html,css,js';
+			this.aa={
+				names:'xiaozhang',
+			}
+			this.study=function(){
+				alert(this.names+this.classes);
+			}
+			this.say=function(str){
+				alert(str);
+			}
+		}
+//		Student.prototype={
+//			say:function(str){
+//				alert(str);
+//			}
+//		}
+		Student.prototype=new People();
+		let ww=new Student('ww');
+//		alert(ww.constructor== Object);
+		
+		ww.eat=function(){
+			alert('eat food');
+		}
+		ww.eat();
+		for(let i in ww){
+			console.log(i);
+		}
+		alert(ww.__proto__==Student.prototype);
+		console.log(ww.__proto__);
+	</script>
+	<body>
+	</body>
+</html>
